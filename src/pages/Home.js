@@ -3,7 +3,9 @@ import React from "react";
 function Home() {
   return (
     <div className="container relative mx-auto py-5 flex flex-col justify-center items-center">
-      <h1 className="text-4xl  text-tertiary font-bold mb-2">Sigma Rules</h1>
+      <h1 className="text-4xl  text-tertiary font-Roboto font-bold mb-2">
+        Sigma Rules
+      </h1>
       <div
         id="list"
         className="container bg-primary 2xl:h-primary lg:h-secondary rounded-lg mx-auto w-3/5 px-3 py-2"
