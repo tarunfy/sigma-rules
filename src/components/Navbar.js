@@ -5,7 +5,7 @@ function Navbar() {
       <div className="flex flex-col justify-center">
         <a
           href="#"
-          className="text-quaternary hover:text-tertiary transition-colors duration-300 ease-in-out  uppercase font-sans font-bold tracking-wider text-3xl"
+          className="text-quaternary   uppercase font-sans font-bold tracking-wider text-3xl"
         >
           Sigma
         </a>

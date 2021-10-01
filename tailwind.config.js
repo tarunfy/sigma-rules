@@ -5,16 +5,21 @@ module.exports = {
     extend: {
       backgroundColor: (theme) => ({
         ...theme("colors"),
-        primary: "#212121",
+        primary: "#222",
         secondary: "#323232",
         tertiary: "#14FFEC",
         quaternary: "#fff",
+        lightBlack: "#111",
       }),
       textColor: {
-        primary: "#212121",
+        primary: "#222",
         secondary: "#323232",
         tertiary: "#14FFEC",
         quaternary: "#fff",
+      },
+      fontFamily: {
+        Roboto: ["Roboto"],
+        Nunito: ["Nunito"],
       },
       height: {
         primary: "80vh",
