@@ -8,8 +8,8 @@ function Home() {
         id="list"
         className="container bg-primary 2xl:h-primary lg:h-secondary rounded-lg mx-auto w-3/5 px-3 py-2"
       ></div>
-      <button className="absolute right-0 bottom-2 bg-tertiary text-secondary font-bold text-2xl rounded-2xl  py-2 px-4 flex items-center justify-center hover:shadow-primary transition-all duration-500 hover:text-tertiary hover:bg-secondary ease-in-out">
-        Add
+      <button className="absolute right-0 bottom-2 bg-secondary text-tertiary hover:shadow-primary font-bold text-2xl rounded-full py-2 px-4 flex items-center justify-center transition-shadow ease-in-out duration-300">
+        +
       </button>
     </div>
   );
