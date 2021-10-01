@@ -15,7 +15,7 @@ function Navbar() {
           href="#"
           className="text-quaternary ml-4 p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg"
         >
-          Rules
+          Signup
         </a>
         <a
           href="#"
