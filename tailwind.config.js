@@ -6,13 +6,13 @@ module.exports = {
       primary: "#212121",
       secondary: "#323232",
       tertiary: "#14FFEC",
-      quaternary: "#E4F9F5",
+      quaternary: "#fff",
     },
     textColor: {
       primary: "#212121",
       secondary: "#323232",
       tertiary: "#14FFEC",
-      quaternary: "#E4F9F5",
+      quaternary: "#fff",
     },
   },
   variants: {

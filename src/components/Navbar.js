@@ -13,13 +13,13 @@ function Navbar() {
       <div className="flex items-center ">
         <a
           href="#"
-          className="ml-4 p-3 hover:text-tertiary transition-colors duration-300 text-quaternary font-sans font-medium text-lg"
+          className="text-quaternary ml-4 p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg"
         >
           Rules
         </a>
         <a
           href="#"
-          className="ml-4 p-3 hover:text-tertiary transition-colors duration-300 text-quaternary font-sans font-medium text-lg"
+          className="text-quaternary ml-4 p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg"
         >
           Login
         </a>
