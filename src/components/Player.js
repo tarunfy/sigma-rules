@@ -22,9 +22,8 @@ const useAudio = (url) => {
 
 const Player = ({ url }) => {
   const [playing, toggle] = useAudio(url);
-
   return (
-    <div>
+    <div id="play">
       {playing ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"

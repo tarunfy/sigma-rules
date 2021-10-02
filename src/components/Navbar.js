@@ -1,28 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <div className=" flex justify-between items-center px-10 py-2">
       <div className="flex flex-col justify-center ">
-        <a
+        <Link
           href="#"
           className="text-quaternary   uppercase font-sans font-bold tracking-wider text-3xl"
+          to="/"
         >
           Sigma
-        </a>
+        </Link>
       </div>
       <div className="flex items-center ">
-        <a
+        <Link
           href="#"
           className="text-quaternary ml-4 p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg"
+          to="/signup"
         >
           Signup
-        </a>
-        <a
+        </Link>
+        <Link
           href="#"
           className="text-quaternary ml-4 p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg"
+          to="/login"
         >
           Login
-        </a>
+        </Link>
       </div>
     </div>
   );
