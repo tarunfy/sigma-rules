@@ -35,10 +35,15 @@ module.exports = {
       borderColor: {
         primary: "#14FFEC",
       },
+      stroke: {
+        primary: "#14FFEC",
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      stroke: ["hover", "focus"],
+    },
   },
   plugins: [],
 };
