@@ -25,16 +25,10 @@ const Player = ({ url }) => {
 
   return (
     <div>
-      {/*<a
-        className="text-quaternary ml-4 p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg cursor-pointer"
-        onClick={toggle}
-      >
-        {playing ? "Pause" : "Play"}
-      </a>*/}
       {playing ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-7 w-7 ml-4 cursor-pointer hover:stroke-primary transition-colors duration-300 ease-in-out"
+          className="h-10 w-10 ml-4 cursor-pointer hover:stroke-primary transition-colors duration-300 ease-in-out"
           fill="none"
           viewBox="0 0 24 24"
           stroke="white"
@@ -50,7 +44,7 @@ const Player = ({ url }) => {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-7 w-7 ml-4 hover:stroke-primary transition-colors duration-300 ease-in-out  cursor-pointer"
+          className="h-10 w-10 ml-4 hover:stroke-primary transition-colors duration-300 ease-in-out  cursor-pointer"
           fill="none"
           viewBox="0 0 24 24"
           stroke="white"

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Rule from "../components/Rule";
 import Modal from "react-modal";
+import main from "../media/audios/Main.mp3";
+import Player from "../components/Player";
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   Modal.setAppElement("#root");
@@ -30,10 +32,10 @@ function Home() {
         <Rule />
       </div>
       <button
-        className="absolute right-0 bottom-2 font-Roboto bg-lightBlack text-tertiary font-semibold text-xl rounded-md py-2 px-4 flex items-center justify-center transform transition duration-500 hover:scale-110 hover:bg-tertiary hover:text-secondary"
+        className="absolute right-0 bottom-2 font-Roboto bg-tertiary text-white font-medium text-xl rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary"
         onClick={() => setModalIsOpen(true)}
       >
-        Add
+        Create Rule
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -64,6 +66,9 @@ function Home() {
           <button onClick={() => setModalIsOpen(false)}>Close</button>
         </div>
       </Modal>
+      <div className="absolute bottom-0 left-2">
+        <Player url={main} />
+      </div>
     </div>
   );
 }
