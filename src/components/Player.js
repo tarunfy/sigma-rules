@@ -1,30 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { PlayerContext } from "../context/PlayerContext";
 
-const useAudio = (url) => {
-  const [audio] = useState(new Audio(url));
-  const [playing, setPlaying] = useState(false);
+const Player = () => {
+  const { isPlaying, toggle } = useContext(PlayerContext);
 
-  const toggle = () => setPlaying(!playing);
-
-  useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [playing]);
-
-  useEffect(() => {
-    audio.addEventListener("ended", () => setPlaying(false));
-    return () => {
-      audio.removeEventListener("ended", () => setPlaying(false));
-    };
-  }, []);
-
-  return [playing, toggle];
-};
-
-const Player = ({ url }) => {
-  const [playing, toggle] = useAudio(url);
   return (
     <div id="play">
-      {playing ? (
+      {isPlaying ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-10 w-10 ml-4 cursor-pointer hover:stroke-primary transition-colors duration-300 ease-in-out"

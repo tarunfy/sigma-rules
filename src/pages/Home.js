@@ -1,40 +1,25 @@
 import React, { useState } from "react";
 import Rule from "../components/Rule";
 import Modal from "react-modal";
-import main from "../media/audios/Main.mp3";
 import Navbar from "../components/Navbar";
 import Player from "../components/Player";
+import { PlayerContextProvider } from "../context/PlayerContext";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   Modal.setAppElement("#root");
 
   return (
-    <>
+    <div id="something">
       <Navbar />
       <div className="container relative mx-auto py-5 flex flex-col justify-center items-center">
         <div
           id="list"
           className="container bg-lightBlack 2xl:h-primary lg:h-secondary rounded-lg mx-auto w-3/5  pt-2"
         >
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
-          <Rule />
+          {[1, 2, 3, 4, 5,6,7].map(() => (
+            <Rule />
+          ))}
         </div>
         <button
           className="absolute right-0 bottom-2 font-Roboto bg-tertiary text-white font-medium text-xl rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary"
@@ -72,10 +57,10 @@ function Home() {
           </div>
         </Modal>
         <div className="absolute bottom-0 left-2">
-          <Player url={main} />
+          <Player />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
