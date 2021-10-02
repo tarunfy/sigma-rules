@@ -22,8 +22,8 @@ module.exports = {
         Nunito: ["Nunito"],
       },
       height: {
-        primary: "80vh",
-        secondary: "76vh",
+        primary: "86vh",
+        secondary: "83vh",
       },
       boxShadow: {
         primary: "rgba(20, 255, 236, 0.24) 0px 3px 8px",
@@ -31,6 +31,9 @@ module.exports = {
       lineHeight: {
         "extra-loose": "2.5",
         12: "2.7rem",
+      },
+      borderColor: {
+        primary: "#14FFEC",
       },
     },
   },
