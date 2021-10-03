@@ -40,15 +40,16 @@ function Login() {
           here today for a very important meeting 🤝
           <span className="lg:text-7xl text-3xl"> ”</span>
         </h1>
-        {error && !loading && (
-          <p className="text-red-500 pt-2 pb-4 text-center">{error}</p>
-        )}
+
         <div className="bg-white z-20 lg:w-96 w-80 lg:pt-10 lg:pb-8  lg:px-10 p-5 rounded-lg">
           <form className="mb-0 lg:space-y-6" onSubmit={handleSubmit}>
             <div>
               <h1 className="text-center text-2xl font-Montserrat font-bold mb-3">
                 Sigma arrives<span>😎</span>
               </h1>
+              {error && !loading && (
+                <p className="text-red-500 pt-2 pb-4 text-center">{error}</p>
+              )}
               <div className="mb-2">
                 <label
                   htmlFor="email"

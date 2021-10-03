@@ -17,7 +17,8 @@ import App from "../App";
 const AppRouter = () => {
   const { user, isFetching } = useContext(AuthContext);
 
-  if (isFetching) return <img src={Rings} alt="loading" />;
+  if (isFetching)
+    return <img className="h-screen w-screen" src={Rings} alt="loading" />;
 
   const isAuthenticated = user != null;
   return (

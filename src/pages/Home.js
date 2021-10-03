@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Rule from "../components/Rule";
 import ReactModal from "react-modal";
 import Navbar from "../components/Navbar";
 import Player from "../components/Player";
+import { AuthContext } from "../context/AuthContext";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   ReactModal.setAppElement("#root");
+  const { user } = useContext(AuthContext);
 
+  const isAuthenticated = user !== null;
   return (
     <>
       <svg
@@ -33,6 +36,7 @@ function Home() {
             ))}
           </div>
           <button
+            disabled={!isAuthenticated}
             className="absolute right-20 lg:bottom-2 lg:right-4 bottom-1 font-mono bg-lightBlack text-white font-medium lg:text-xl text-base outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black"
             onClick={() => setModalIsOpen(true)}
           >
