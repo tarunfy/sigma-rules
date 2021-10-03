@@ -17,7 +17,7 @@ export const PlayerContextProvider = ({ children }) => {
     return () => {
       audio.removeEventListener("ended", () => setIsPlaying(false));
     };
-  }, []);
+  }, [audio]);
 
   return (
     <PlayerContext.Provider

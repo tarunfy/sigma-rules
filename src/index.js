@@ -1,30 +1,17 @@
 import React from "react";
 import "./styles.css";
 import ReactDOM from "react-dom";
-import App from "./App";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Home from "./pages/Home";
 import { PlayerContextProvider } from "./context/PlayerContext";
+import { AuthContextProvider } from "./context/AuthContext";
+import AppRouter from "./components/AppRouter";
 
 ReactDOM.render(
   <React.StrictMode>
-    <PlayerContextProvider>
-      <BrowserRouter>
-        <App />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </BrowserRouter>
-    </PlayerContextProvider>
+    <AuthContextProvider>
+      <PlayerContextProvider>
+        <AppRouter />
+      </PlayerContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

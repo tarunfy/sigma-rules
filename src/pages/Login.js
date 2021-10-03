@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    setEmail("");
+    setPassword("");
+  };
   return (
     <>
       <svg
@@ -10,7 +19,7 @@ function Login() {
       >
         <path
           fill="#14FFEC"
-          fill-opacity="1"
+          fillOpacity="1"
           d="M0,96L26.7,106.7C53.3,117,107,139,160,160C213.3,181,267,203,320,197.3C373.3,192,427,160,480,160C533.3,160,587,192,640,202.7C693.3,213,747,203,800,181.3C853.3,160,907,128,960,144C1013.3,160,1067,224,1120,245.3C1173.3,267,1227,245,1280,208C1333.3,171,1387,117,1413,90.7L1440,64L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
         ></path>
       </svg>
@@ -21,12 +30,11 @@ function Login() {
           <span className="lg:text-7xl text-3xl"> ”</span>
         </h1>
         <div className="bg-white z-20 lg:w-96 w-80 lg:pt-10 lg:pb-8  lg:px-10 p-5 rounded-lg">
-          <form className="mb-0 lg:space-y-6">
+          <form className="mb-0 lg:space-y-6" onSubmit={handleSubmit}>
             <div>
               <h1 className="text-center text-2xl font-Montserrat font-bold mb-3">
-                Glad to see you <span>😎</span>
+                Sigma arrives<span>😎</span>
               </h1>
-
               <div className="mb-2">
                 <label
                   htmlFor="email"
@@ -36,6 +44,8 @@ function Login() {
                 </label>
                 <div className="mt-1">
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     id="email"
                     autoComplete="off"
@@ -52,6 +62,8 @@ function Login() {
               </label>
               <div className="mt-1">
                 <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   autoComplete="off"
                   id="password"
