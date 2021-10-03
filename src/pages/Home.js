@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
       <svg
-        viewBox="88 78 100 100"
+        viewBox="95 79 100 100"
         className="absolute top-0 left-0 z-0 h-60 w-100"
         xmlns="http://www.w3.org/2000/svg"
       >
