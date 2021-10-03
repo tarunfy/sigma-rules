@@ -46,7 +46,7 @@ function Login() {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm bg-secondary font-Roboto font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-xl transition-all duration-300 ease-in-out"
+              className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm bg-secondary  font-Roboto font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-xl transition-all duration-300 ease-in-out"
             >
               Log in
             </button>

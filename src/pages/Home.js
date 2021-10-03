@@ -34,11 +34,15 @@ function Home() {
               backgroundColor: "rgba(0, 0, 0, 0.75)",
             },
             content: {
-              backgroundColor: "#111",
-              height: "500px",
-              width: "600px",
+              backgroundColor: "white",
+              height: "400px",
+              width: "500px",
               top: "50%",
               opacity: 1,
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              flexDirection: "column",
               left: "50%",
               right: "auto",
               bottom: "auto",
@@ -49,11 +53,54 @@ function Home() {
             },
           }}
         >
-          <h2 className="text-xl text-white">Modal title</h2>
-          <p>Modal Body</p>
-          <div>
-            <button onClick={() => setModalIsOpen(false)}>Close</button>
-          </div>
+          <h1 className="text-center text-2xl font-Montserrat font-bold">
+            Define your own sigma rule
+          </h1>
+          <span className="text-4xl">📝</span>
+          <form className="mb-0 space-y-6  w-3/4 mt-8">
+            <div>
+              <div className="mb-2">
+                <label
+                  htmlFor="rulenum"
+                  className="block text-sm font-medium text-gray-900"
+                >
+                  Rule Number
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="number"
+                    id="rulenum"
+                    autoComplete="off"
+                    required
+                    className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-600 focus:ring-1 focus:ring-gray-600"
+                  />
+                </div>
+              </div>
+              <label
+                htmlFor="rule"
+                className="block text-sm font-medium text-gray-900"
+              >
+                Rule
+              </label>
+              <div className="mt-1">
+                <textarea
+                  type="text"
+                  autoComplete="off"
+                  id="rule"
+                  required
+                  className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-600 focus:ring-1 focus:ring-gray-600"
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm bg-secondary  font-Roboto font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-xl transition-all duration-300 ease-in-out"
+              >
+                Add
+              </button>
+            </div>
+          </form>
         </Modal>
         <div className="absolute bottom-0 left-2">
           <Player />
