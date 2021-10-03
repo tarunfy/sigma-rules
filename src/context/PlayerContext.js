@@ -10,7 +10,7 @@ export const PlayerContextProvider = ({ children }) => {
 
   useEffect(() => {
     isPlaying ? audio.play() : audio.pause();
-  }, [isPlaying]);
+  }, [isPlaying, audio]);
 
   useEffect(() => {
     audio.addEventListener("ended", () => setIsPlaying(false));

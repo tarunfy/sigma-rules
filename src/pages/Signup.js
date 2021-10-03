@@ -11,7 +11,9 @@ function Signup() {
   const signUp = async () => {
     setLoading(true);
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      const res = await auth.createUserWithEmailAndPassword(email, password);
+      await res.user.updateProfile({ displayName: username });
+      console.log("ggs");
     } catch (err) {
       setError(err.message);
     }

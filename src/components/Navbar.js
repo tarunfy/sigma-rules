@@ -8,18 +8,13 @@ function Navbar() {
   return (
     <div className="flex  justify-between items-center lg:px-10  py-2 px-3">
       <div className="flex flex-col justify-center ">
-        <Link
-          href="#"
-          className="text-black uppercase font-Montserrat font-bold tracking-wider text-3xl"
-          to="/"
-        >
+        <p className="text-black cursor-default uppercase font-Montserrat font-bold tracking-wider text-3xl">
           Sigma
-        </Link>
+        </p>
       </div>
       <div className="flex items-center ">
         {!user && (
           <Link
-            href="#"
             className="text-quaternary lg:ml-4 lg:p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg p-2"
             to="/signup"
           >
@@ -28,7 +23,6 @@ function Navbar() {
         )}
         {!user && (
           <Link
-            href="#"
             className="text-quaternary lg:ml-4 lg:p-3 hover:text-tertiary transition-colors duration-300  font-sans font-medium text-lg p-2"
             to="/login"
           >

@@ -6,11 +6,29 @@ import Player from "../components/Player";
 import { AuthContext } from "../context/AuthContext";
 
 function Home() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   ReactModal.setAppElement("#root");
-  const { user } = useContext(AuthContext);
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [ruleNum, setRuleNum] = useState("");
+  const [rule, setRule] = useState("");
+
+  const { user } = useContext(AuthContext);
   const isAuthenticated = user !== null;
+
+  //Function to store rule and ruleNum in the database:
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setModalIsOpen(false);
+    setRule("");
+    setRuleNum("");
+  };
+
+  const handleClear = () => {
+    setRule("");
+    setRuleNum("");
+  };
+
   return (
     <>
       <svg
@@ -29,7 +47,7 @@ function Home() {
         <div className="container mx-auto py-5 flex flex-col justify-start items-center">
           <div
             id="list"
-            className="container bg-lightBlack 2xl:h-primary lg:h-secondary h-secondary rounded-lg mx-auto lg:w-3/5 w-5/6 lg:pt-2 pt-1"
+            className="container bg-lightBlack 2xl:h-primary lg:h-secondary h-secondary rounded-lg mx-auto lg:w-3/5 w-full lg:pt-2 pt-1"
           >
             {[1, 2, 3, 4, 5, 6, 7].map(() => (
               <Rule />
@@ -53,7 +71,10 @@ function Home() {
               Init your own sigma rule
             </h1>
             <span className="text-4xl">📝</span>
-            <form className="mb-0 space-y-6  w-3/4 mt-8">
+            <form
+              className="mb-0 space-y-6  w-3/4 mt-8"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <div className="mb-2">
                   <label
@@ -64,6 +85,8 @@ function Home() {
                   </label>
                   <div className="mt-1">
                     <input
+                      value={ruleNum}
+                      onChange={(e) => setRuleNum(e.target.value)}
                       type="number"
                       id="rulenum"
                       autoComplete="off"
@@ -80,6 +103,8 @@ function Home() {
                 </label>
                 <div className="mt-1">
                   <textarea
+                    value={rule}
+                    onChange={(e) => setRule(e.target.value)}
                     type="text"
                     autoComplete="off"
                     id="rule"
@@ -96,7 +121,8 @@ function Home() {
                   Init
                 </button>
                 <button
-                  type="submit"
+                  onClick={handleClear}
+                  type="button"
                   className="w-1/4 ml-3 flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-secondary transition-all duration-300 ease-in-out"
                 >
                   Clear

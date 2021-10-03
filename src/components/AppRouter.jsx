@@ -4,12 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import Signup from "../pages/Signup";
 import Rings from "../media/imgs/rings.svg";
 
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import App from "../App";
@@ -22,7 +17,7 @@ const AppRouter = () => {
 
   const isAuthenticated = user != null;
   return (
-    <BrowserRouter>
+    <Router>
       <App />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -39,7 +34,7 @@ const AppRouter = () => {
           }
         />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 
