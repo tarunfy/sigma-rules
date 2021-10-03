@@ -1,14 +1,25 @@
 import React, { useState } from "react";
+import { auth } from "../config/firebaseConfig";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const login = async () => {
+    setLoading(true);
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      setError(err.message);
+    }
+    setLoading(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
-    setEmail("");
-    setPassword("");
+    login();
   };
   return (
     <>
@@ -29,6 +40,9 @@ function Login() {
           here today for a very important meeting 🤝
           <span className="lg:text-7xl text-3xl"> ”</span>
         </h1>
+        {error && !loading && (
+          <p className="text-red-500 pt-2 pb-4 text-center">{error}</p>
+        )}
         <div className="bg-white z-20 lg:w-96 w-80 lg:pt-10 lg:pb-8  lg:px-10 p-5 rounded-lg">
           <form className="mb-0 lg:space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -74,9 +88,10 @@ function Login() {
               <div className="flex mt-3  justify-center">
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-2/4 flex justify-center py-3 px-4 border border-transparent shadow-sm bg-secondary font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-secondary transition-all duration-300 ease-in-out "
                 >
-                  Login
+                  {loading ? "Logging in..." : "Login"}
                 </button>
               </div>
             </div>

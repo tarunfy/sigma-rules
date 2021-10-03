@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { auth } from "../config/firebaseConfig";
-import { AuthContext } from "../context/AuthContext";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -14,7 +13,6 @@ function Signup() {
     try {
       await auth.createUserWithEmailAndPassword(email, password);
     } catch (err) {
-      console.log(err);
       setError(err.message);
     }
     setLoading(false);
