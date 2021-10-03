@@ -25,6 +25,7 @@ module.exports = {
       height: {
         primary: "86vh",
         secondary: "83vh",
+        tertiary: "77vh",
       },
       boxShadow: {
         primary: "rgba(20, 255, 236, 0.24) 0px 3px 8px",
@@ -42,6 +43,9 @@ module.exports = {
       },
       ringColor: {
         primary: "#14FFEC",
+      },
+      screens: {
+        mobile: "350px",
       },
     },
   },

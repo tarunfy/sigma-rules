@@ -1,57 +1,37 @@
 import React, { useState } from "react";
 import Rule from "../components/Rule";
-import Modal from "react-modal";
+import ReactModal from "react-modal";
 import Navbar from "../components/Navbar";
 import Player from "../components/Player";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  Modal.setAppElement("#root");
+  ReactModal.setAppElement("#root");
 
   return (
-    <div id="something">
+    <div className="relative h-screen ">
       <Navbar />
-      <div className=" container relative mx-auto py-5 flex flex-col justify-start items-center">
+      <div className="container mx-auto py-5 flex flex-col justify-start items-center">
         <div
           id="list"
-          className="container bg-lightBlack 2xl:h-primary lg:h-secondary rounded-lg mx-auto w-3/5  pt-2"
+          className="container bg-lightBlack 2xl:h-primary lg:h-secondary h-secondary rounded-lg mx-auto lg:w-3/5 w-5/6 lg:pt-2 pt-1"
         >
           {[1, 2, 3, 4, 5, 6, 7].map(() => (
             <Rule />
           ))}
         </div>
         <button
-          className="absolute right-0 bottom-2 font-mono bg-lightBlack text-white font-medium text-xl outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black"
+          className="absolute right-20 lg:bottom-2 lg:right-4 bottom-1 font-mono bg-lightBlack text-white font-medium lg:text-xl text-base outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black"
           onClick={() => setModalIsOpen(true)}
         >
           Init Rule
         </button>
-        <Modal
+        <ReactModal
           isOpen={modalIsOpen}
           onRequestClose={() => setModalIsOpen(false)}
-          style={{
-            overlay: {
-              backgroundColor: "rgba(0, 0, 0, 0.75)",
-            },
-            content: {
-              backgroundColor: "white",
-              height: "400px",
-              width: "500px",
-              top: "50%",
-              opacity: 1,
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              flexDirection: "column",
-              left: "50%",
-              right: "auto",
-              bottom: "auto",
-              marginRight: "-50%",
-              transform: "translate(-50%, -50%)",
-              border: "none",
-              borderRadius: "1rem",
-            },
-          }}
+          closeTimeoutMS={200}
+          className="Modal"
+          overlayClassName="Overlay"
         >
           <h1 className="text-center text-2xl font-Montserrat font-bold">
             Init your own sigma rule
@@ -107,8 +87,8 @@ function Home() {
               </button>
             </div>
           </form>
-        </Modal>
-        <div className="absolute bottom-0 left-2">
+        </ReactModal>
+        <div className="absolute lg:bottom-1 bottom-1 left-20 lg:left-4">
           <Player />
         </div>
       </div>
