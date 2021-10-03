@@ -28,6 +28,7 @@ module.exports = {
       },
       boxShadow: {
         primary: "rgba(20, 255, 236, 0.24) 0px 3px 8px",
+        secondary: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
       },
       lineHeight: {
         "extra-loose": "2.5",

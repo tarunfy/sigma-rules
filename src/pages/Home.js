@@ -21,10 +21,10 @@ function Home() {
           ))}
         </div>
         <button
-          className="absolute right-0 bottom-2 font-Roboto bg-tertiary text-white font-medium text-xl rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary"
+          className="absolute right-0 bottom-2 font-mono bg-lightBlack text-white font-medium text-xl outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black"
           onClick={() => setModalIsOpen(true)}
         >
-          Create Rule
+          Init Rule
         </button>
         <Modal
           isOpen={modalIsOpen}
@@ -54,7 +54,7 @@ function Home() {
           }}
         >
           <h1 className="text-center text-2xl font-Montserrat font-bold">
-            Define your own sigma rule
+            Init your own sigma rule
           </h1>
           <span className="text-4xl">📝</span>
           <form className="mb-0 space-y-6  w-3/4 mt-8">
@@ -92,12 +92,18 @@ function Home() {
                 />
               </div>
             </div>
-            <div>
+            <div className="flex justify-end">
               <button
                 type="submit"
-                className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm bg-secondary  font-Roboto font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-xl transition-all duration-300 ease-in-out"
+                className="w-1/4 flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black  transition-all duration-300 ease-in-out hover:shadow-secondary"
               >
-                Add
+                Init
+              </button>
+              <button
+                type="submit"
+                className="w-1/4 ml-3 flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-secondary transition-all duration-300 ease-in-out"
+              >
+                Clear
               </button>
             </div>
           </form>
