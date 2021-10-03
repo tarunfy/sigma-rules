@@ -3,7 +3,6 @@ import Rule from "../components/Rule";
 import Modal from "react-modal";
 import Navbar from "../components/Navbar";
 import Player from "../components/Player";
-import { PlayerContextProvider } from "../context/PlayerContext";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -12,12 +11,12 @@ function Home() {
   return (
     <div id="something">
       <Navbar />
-      <div className="container relative mx-auto py-5 flex flex-col justify-center items-center">
+      <div className=" container relative mx-auto py-5 flex flex-col justify-start items-center">
         <div
           id="list"
           className="container bg-lightBlack 2xl:h-primary lg:h-secondary rounded-lg mx-auto w-3/5  pt-2"
         >
-          {[1, 2, 3, 4, 5,6,7].map(() => (
+          {[1, 2, 3, 4, 5, 6, 7].map(() => (
             <Rule />
           ))}
         </div>

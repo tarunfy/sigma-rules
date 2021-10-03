@@ -15,7 +15,7 @@ import { PlayerContextProvider } from "./context/PlayerContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <PlayerContextProvider text="My root PCP has printed">
+    <PlayerContextProvider>
       <BrowserRouter>
         <App />
         <Switch>

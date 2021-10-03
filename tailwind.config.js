@@ -20,6 +20,7 @@ module.exports = {
       fontFamily: {
         Roboto: ["Roboto"],
         Nunito: ["Nunito"],
+        Montserrat: ["Montserrat"],
       },
       height: {
         primary: "86vh",
@@ -36,6 +37,9 @@ module.exports = {
         primary: "#14FFEC",
       },
       stroke: {
+        primary: "#14FFEC",
+      },
+      ringColor: {
         primary: "#14FFEC",
       },
     },
