@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Rule from "../components/Rule";
 import ReactModal from "react-modal";
 import Navbar from "../components/Navbar";
 import Player from "../components/Player";
 import { AuthContext } from "../context/AuthContext";
+import { firestore } from "../config/firebaseConfig";
 
 function Home() {
   ReactModal.setAppElement("#root");
@@ -11,14 +12,47 @@ function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [ruleNum, setRuleNum] = useState("");
   const [rule, setRule] = useState("");
+  const [isAdding, setIsAdding] = useState(false);
+  const [error, setError] = useState(null);
+  const [rules, setRules] = useState(null);
 
   const { user } = useContext(AuthContext);
   const isAuthenticated = user !== null;
 
   //Function to store rule and ruleNum in the database:
+  const addRule = async () => {
+    setIsAdding(true);
+    try {
+      await firestore.collection("rules").add({
+        rule: rule,
+        ruleNum: ruleNum,
+        user: user.displayName,
+        date: new Date(),
+      });
+    } catch (err) {
+      setError(err.message);
+    }
+    setIsAdding(false);
+  };
+
+  //function to check for snapshot in the database in get back the docs:
+  const getRules = async () => {
+    firestore
+      .collection("rules")
+      .orderBy("date", "desc")
+      .onSnapshot((res) => {
+        const Rules = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setRules(Rules);
+      });
+  };
+
+  useEffect(() => {
+    getRules();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addRule();
     setModalIsOpen(false);
     setRule("");
     setRuleNum("");
@@ -49,9 +83,18 @@ function Home() {
             id="list"
             className="container bg-lightBlack 2xl:h-primary lg:h-secondary h-secondary rounded-lg mx-auto lg:w-3/5 w-full lg:pt-2 pt-1"
           >
-            {[1, 2, 3, 4, 5, 6, 7].map(() => (
-              <Rule />
-            ))}
+            {rules &&
+              rules.map((rule) => {
+                return (
+                  <Rule
+                    key={rule.id}
+                    user={rule.user}
+                    date={rule.date}
+                    rule={rule.rule}
+                    ruleNum={rule.ruleNum}
+                  />
+                );
+              })}
           </div>
           <button
             disabled={!isAuthenticated}
@@ -71,6 +114,9 @@ function Home() {
               Init your own sigma rule
             </h1>
             <span className="text-4xl">📝</span>
+            {error && !isAdding && (
+              <p className="text-red-500 pt-2 pb-4 text-center">{error}</p>
+            )}
             <form
               className="mb-0 space-y-6  w-3/4 mt-8"
               onSubmit={handleSubmit}
@@ -115,15 +161,16 @@ function Home() {
               </div>
               <div className="flex justify-end">
                 <button
+                  disabled={isAdding}
                   type="submit"
-                  className="w-1/4 flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black  transition-all duration-300 ease-in-out hover:shadow-secondary"
+                  className="flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black  transition-all duration-300 ease-in-out hover:shadow-secondary"
                 >
-                  Init
+                  {isAdding ? "Initializing..." : "Init"}
                 </button>
                 <button
                   onClick={handleClear}
                   type="button"
-                  className="w-1/4 ml-3 flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-secondary transition-all duration-300 ease-in-out"
+                  className=" ml-3 flex justify-center py-2 px-3 border border-transparent shadow-sm bg-secondary  font-mono font-bold text-xl text-white text-center rounded-lg focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-black hover:shadow-secondary transition-all duration-300 ease-in-out"
                 >
                   Clear
                 </button>
