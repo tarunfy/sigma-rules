@@ -5,8 +5,9 @@ import Navbar from "../components/Navbar";
 import Player from "../components/Player";
 import { AuthContext } from "../context/AuthContext";
 import { firestore } from "../config/firebaseConfig";
+import { Redirect } from "react-router";
 
-function Home() {
+function Home({ history }) {
   ReactModal.setAppElement("#root");
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -17,7 +18,6 @@ function Home() {
   const [rules, setRules] = useState(null);
 
   const { user } = useContext(AuthContext);
-  const isAuthenticated = user !== null;
 
   //Function to store rule and ruleNum in the database:
   const addRule = async () => {
@@ -97,9 +97,10 @@ function Home() {
               })}
           </div>
           <button
-            disabled={!isAuthenticated}
-            className="absolute right-20 lg:bottom-2 lg:right-4 bottom-1 font-mono bg-lightBlack text-white font-medium lg:text-xl text-base outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black"
-            onClick={() => setModalIsOpen(true)}
+            className="absolute right-20 lg:bottom-2 lg:right-4 bottom-2 font-mono bg-lightBlack text-white font-medium lg:text-xl text-base outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black "
+            onClick={
+              user ? () => setModalIsOpen(true) : () => history.push("/login")
+            }
           >
             Init Rule
           </button>
@@ -177,7 +178,7 @@ function Home() {
               </div>
             </form>
           </ReactModal>
-          <div className="absolute lg:bottom-1 bottom-1 left-20 lg:left-4">
+          <div className="absolute lg:bottom-1 bottom-2 left-20 lg:left-4">
             <Player />
           </div>
         </div>
