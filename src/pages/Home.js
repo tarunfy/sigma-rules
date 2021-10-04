@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Player from "../components/Player";
 import { AuthContext } from "../context/AuthContext";
 import { firestore } from "../config/firebaseConfig";
-import { Redirect } from "react-router";
+import { motion } from "framer-motion";
 
 function Home({ history }) {
   ReactModal.setAppElement("#root");
@@ -65,21 +65,30 @@ function Home({ history }) {
 
   return (
     <>
-      <svg
+      <motion.svg
+        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: -95, opacity: 1 }}
+        transition={{ type: "inertia", velocity: 120 }}
         viewBox="95 79 100 100"
         className="absolute top-0 left-0 z-0 h-60 w-100"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
+          //animate={{ x: 0, opacity: 1 }}
+          //initial={{ x: 100, opacity: 1 }}
+          //transition={{ type: "inertia", velocity: 120 }}
           fill="#14FFEC"
           d="M41.8,-43.8C56,-27.7,70.4,-13.9,65.4,-5C60.4,3.9,36.1,7.8,22,10.4C7.8,13,3.9,14.2,-9.4,23.6C-22.7,32.9,-45.3,50.5,-58.8,47.9C-72.2,45.3,-76.5,22.7,-73.8,2.7C-71.1,-17.3,-61.6,-34.7,-48.1,-50.8C-34.7,-66.8,-17.3,-81.6,-1.7,-79.8C13.9,-78.1,27.7,-59.8,41.8,-43.8Z"
           transform="translate(100 100)"
         />
-      </svg>
+      </motion.svg>
       <div className="relative h-screen">
         <Navbar />
         <div className="container mx-auto py-5 flex flex-col justify-start items-center">
-          <div
+          <motion.div
+            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.5, type: "tween" }}
             id="list"
             className="container bg-lightBlack 2xl:h-primary lg:h-secondary h-secondary rounded-lg mx-auto lg:w-3/5 w-full lg:pt-2 pt-1"
           >
@@ -95,7 +104,7 @@ function Home({ history }) {
                   />
                 );
               })}
-          </div>
+          </motion.div>
           <button
             className="absolute right-20 lg:bottom-2 lg:right-4 bottom-2 font-mono bg-lightBlack text-white font-medium lg:text-xl text-base outline-none rounded-xl py-2 px-4 flex items-center justify-center transform transition duration-300 hover:scale-105 hover:opacity-90 hover:shadow-primary hover:text-tertiary hover:border-primary border border-black "
             onClick={

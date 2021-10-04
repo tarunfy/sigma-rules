@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../config/firebaseConfig";
-
+import { motion } from "framer-motion";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +22,11 @@ function Login() {
     login();
   };
   return (
-    <>
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 0.1, type: "tween" }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="absolute bottom-0 z-0 h-60 w-100"
@@ -35,13 +39,23 @@ function Login() {
         ></path>
       </svg>
       <div className="container z-20  flex flex-col justify-center  h-screen mx-auto items-center ">
-        <h1 className="font-Montserrat mb-10  cursor-default font-semibold text-center text-white lg:text-6xl lg:mb-6  text-2xl">
+        <motion.h1
+          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          transition={{ duration: 1, type: "tween" }}
+          className="font-Montserrat mb-10  cursor-default font-semibold text-center text-white lg:text-6xl lg:mb-6  text-2xl"
+        >
           <span className="lg:text-7xl text-3xl">“</span> Boys, we've gathered
           here today for a very important meeting 🤝
           <span className="lg:text-7xl text-3xl"> ”</span>
-        </h1>
+        </motion.h1>
 
-        <div className="bg-white z-20 lg:w-96 w-80 lg:pt-10 lg:pb-8  lg:px-10 p-5 rounded-lg">
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 1.2, type: "tween" }}
+          className="bg-white z-20 lg:w-96 w-80 lg:pt-10 lg:pb-8  lg:px-10 p-5 rounded-lg"
+        >
           <form className="mb-0 lg:space-y-6" onSubmit={handleSubmit}>
             <div>
               <h1 className="text-center text-2xl font-Montserrat font-bold mb-3">
@@ -97,9 +111,9 @@ function Login() {
               </div>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
-    </>
+    </motion.div>
   );
 }
 
