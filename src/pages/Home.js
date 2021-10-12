@@ -40,6 +40,7 @@ function Home({ history }) {
     firestore
       .collection("rules")
       .orderBy("date", "desc")
+      .limit(15)
       .onSnapshot((res) => {
         const Rules = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setRules(Rules);
